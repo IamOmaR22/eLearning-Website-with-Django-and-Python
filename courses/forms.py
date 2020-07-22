@@ -19,6 +19,14 @@ class TrueFalseQuestionForm(forms.ModelForm):
         fields = [
             'order',
             'prompt',
+        ]
+
+
+class MultipleChoiceQuestionForm(forms.ModelForm):
+    class Meta:
+        model = models.MultipleChoiceQuestion
+        fields = [
             'order',
-            'total_questions',
+            'prompt',
+            'shuffle_answers',
         ]
