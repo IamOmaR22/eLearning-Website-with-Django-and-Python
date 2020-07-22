@@ -1,0 +1,29 @@
+{% extends "layout.html" %}
+{% load humanize course_extras %}
+
+{% block title %}{{ course.title }}{% endblock %}
+
+{% block content %}
+    <article>
+        <h2>{{ course.title }}</h2>
+
+        <div class="card-header mt-4">
+            {{ course.description|markdown_to_html }}
+        </div>
+
+        <p class="bg-dark text-light p-3 mt-5">There are {{ course.step_set.count|apnumber }} step{{ course.step_set.count|pluralize }} in this course: {{ course.step_set.all|join:", " }}</p>
+
+        <section>
+            
+            {% for step in course.step_set.all %}
+            <div class="card-header">
+                <h3><a href="{% url 'step_detail' course_pk=step.course.pk step_pk=step.pk %}">{{ step.title }}</a></h3>
+            </div>
+                <p class="card-body">{{ step.description }}</p>
+                <hr>
+            {% endfor %}
+
+        </section>
+
+    </article>
+{% endblock %}

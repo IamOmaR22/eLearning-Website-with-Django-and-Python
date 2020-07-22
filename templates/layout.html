@@ -1,0 +1,43 @@
+{% load static %}
+{%  load course_extras %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/layout.css' %}">
+    {% block static %}{% endblock %}
+</head>
+<body>
+    <div class="container mt-1">
+      <div>{% nav_courses_list %}</div>
+    <ul>
+        <li><a href="{% url 'home' %}">Home</a></li>
+        <li><a href="{% url 'course_list' %}">Courses</a></li>
+        <li><a href="{% url 'suggestion' %}">Suggestion</a></li>
+    </ul>    
+        <p class="card-header mb-3">Don't miss our latest course - {% newest_course %}!</p>
+
+        {% block content %}{% endblock %}
+
+
+
+
+        <hr>
+    <div class="row mb-4">
+        <div class="col-6">
+            <p>Omar's eLearning Site</p>
+        </div>
+        <div class="col-6">
+            <a class="btn btn-info float-right" href="{% url 'course_list' %}">Courses</a>
+        </div>
+    </div>
+
+    </div>
+
+    
+    
+</body>
+</html>

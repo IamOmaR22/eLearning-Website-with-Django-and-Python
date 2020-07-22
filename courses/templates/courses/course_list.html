@@ -1,0 +1,31 @@
+{% extends "layout.html" %}
+{% load static %}
+{% block static %}<link rel="stylesheet" href="{% static 'courses/css/courses.css' %}">{% endblock %}
+{% block title %}Available Courses{% endblock %}
+
+{% block content %}
+
+    <div class="row mt-4">
+        {% for course in courses %}
+            <div class="col-md-3"> 
+                <div class="card bg-light mb-3" style="max-width: 18rem;">
+                    <div class="card-header">
+                        <a href="{% url 'course_detail' pk=course.pk %}">{{ course.title }}</a>
+                    </div>
+                    <div class="card-body">
+                        {% if course.description|wordcount <= 5 %}
+                            <p class="card-text">{{ course.description }}</p>
+                        {% else %}
+                            <p class="card-text">{{ course.description|truncatewords:5 }}</p>
+                            <a href="{% url 'course_detail' pk=course.pk %}">Read more</a>
+                        {% endif %}
+                        <div>Created on: {{ course.created_at|date:"F j, Y" }}</div>
+
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+        <div>Have questions? Contact us! {{ email|urlize }}</div>
+    </div> 
+
+{% endblock %}

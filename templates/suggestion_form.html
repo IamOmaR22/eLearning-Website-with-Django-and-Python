@@ -1,0 +1,17 @@
+{% extends "layout.html" %}
+{% load bootstrap4 %}
+
+{% block title %}Suggest an idea!{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-12">
+        <form action="" method="POST">
+            {% csrf_token %}
+            {% bootstrap_form form %}
+
+            <input type="submit" class="btn btn-primary mb-4">
+        </form>
+    </div>
+</div>
+{% endblock %}
