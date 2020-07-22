@@ -1,0 +1,19 @@
+{% extends "layout.html" %}
+
+{% block title %}New Quiz  | {{ course.title }}{{ block.super }}{% endblock %}
+
+{% block breadcrumbs %}
+  <li><a href="{% url 'courses:detail' pk=course.pk %}">{{ course.title }}</a></li>
+{% endblock %}
+
+{% block content %}
+  <div class="row columns">
+    {{ block.super }}
+    <h1>Make a new quiz</h1>
+    <form class="" action="" method="post">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <input type="submit" class="button" name="" value="Save">
+    </form>
+  </div>
+{% endblock %}

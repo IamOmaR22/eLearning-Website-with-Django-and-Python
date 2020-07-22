@@ -26,4 +26,10 @@
         </section>
 
     </article>
+
+  {% if user.is_authenticated %}
+  <hr>
+  <a href="{% url 'create_quiz' course_pk=course.id %}" class="btn btn-primary">New Quiz</a>
+  {% endif %}
+
 {% endblock %}

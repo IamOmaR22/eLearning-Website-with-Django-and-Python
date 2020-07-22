@@ -1,7 +1,12 @@
 from itertools import chain
-from django.shortcuts import render, get_object_or_404
+from django.contrib import messages
+from django.contrib.auth.decorators import login_required
+from django.http import HttpResponseRedirect
 
+from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse
+
+from . import forms
 from . import models
 
 
@@ -27,4 +32,20 @@ def text_detail(request, course_pk, step_pk):
 
 def quiz_detail(request, course_pk, step_pk):
     step = get_object_or_404(models.Quiz, course_id=course_pk, pk=step_pk)
-    return render(request, 'courses/step_detail.html', {'step':step})
+    return render(request, 'courses/quiz_detail.html', {'step':step})
+
+@login_required
+def quiz_create(request, course_pk):
+    course = get_object_or_404(models.Course, pk=course_pk)
+    form = forms.QuizForm()
+
+    if request.method == 'POST':
+        form = forms.QuizForm(request.POST)
+        if form.is_valid():
+            quiz = form.save(commit=False)
+            quiz.course = course
+            quiz.save()
+            messages.add_message(request, messages.SUCCESS, "Quiz Added!")
+            return HttpResponseRedirect(quiz.get_absolute_url())
+
+    return render(request, 'courses/quiz_form.html', {'form':form, 'course':course})
