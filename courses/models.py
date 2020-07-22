@@ -1,3 +1,4 @@
+from django.urls import reverse
 from django.db import models
 
 class Course(models.Model):
@@ -26,3 +27,16 @@ class Step(models.Model):
 
 class Text(Step):
     content = models.TextField(blank=True, default='')
+
+    def get_absolute_url(self):
+        return reverse('text_detail', kwargs={'course_pk': self.course_id, 'step_pk': self.id})
+
+
+class Quiz(Step):
+    total_questions = models.IntegerField(default=4)
+
+    class Meta:
+        verbose_name_plural = "Quizzes"
+
+    def get_absolute_url(self):
+        return reverse('quiz_detail', kwargs={'course_pk': self.course_id, 'step_pk': self.id})

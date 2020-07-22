@@ -7,7 +7,7 @@
 
     <div class="row mt-4">
         {% for course in courses %}
-            <div class="col-md-3"> 
+            <div class="col-md-3">
                 <div class="card bg-light mb-3" style="max-width: 18rem;">
                     <div class="card-header">
                         <a href="{% url 'course_detail' pk=course.pk %}">{{ course.title }}</a>
@@ -25,7 +25,7 @@
                 </div>
             </div>
         {% endfor %}
-        <div>Have questions? Contact us! {{ email|urlize }}</div>
-    </div> 
+    </div>
+    <div class="mt-4">Have questions? Contact us! {{ email|urlize }}</div>
 
 {% endblock %}
