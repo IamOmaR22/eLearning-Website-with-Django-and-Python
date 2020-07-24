@@ -8,11 +8,17 @@
 {% endblock %}
 
 {% block content %}
-  <div class="row columns">
+  <div class="row columns container">
     <article>
         {{ block.super }}
         <h1>{{step.title}}</h1>
         Quiz questions here
-    </article>    
+    </article>
+
+    {% if user.is_authenticated %}
+      <hr>
+      <a href="{% url 'edit_quiz' course_pk=step.course.pk quiz_pk=step.pk %}" class="btn btn-dark">Edit</a>
+    {% endif %}
+
   </div>
 {% endblock %}
