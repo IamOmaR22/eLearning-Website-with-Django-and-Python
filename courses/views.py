@@ -65,3 +65,24 @@ def quiz_edit(request, course_pk, quiz_pk):
             return HttpResponseRedirect(quiz.get_absolute_url())
 
     return render(request, 'courses/quiz_form.html', {'form':form, 'course':quiz.course})
+
+@login_required
+def create_question(request, quiz_pk, question_type):
+    quiz = get_object_or_404(models.Quiz, pk=quiz_pk)
+    if question_type == 'tf':
+        form_class = forms.TrueFalseQuestionForm
+    else:
+        form_class = forms.MultipleChoiceQuestionForm
+
+    form = form_class()
+
+    if request.method == 'POST':
+        form = form_class(request.POST)
+        if form.is_valid():
+            question = form.save(commit=False)
+            question.quiz = quiz
+            question.save()
+            messages.success(request, "Added Question")
+            return HttpResponseRedirect(quiz.get_absolute_url())
+
+    return render(request, 'courses/question_form.html', {'form':form, 'quiz':quiz})

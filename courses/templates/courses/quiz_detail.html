@@ -16,8 +16,12 @@
     </article>
 
     {% if user.is_authenticated %}
-      <hr>
-      <a href="{% url 'edit_quiz' course_pk=step.course.pk quiz_pk=step.pk %}" class="btn btn-dark">Edit</a>
+      <div class="container">
+        <hr>
+        <a href="{% url 'edit_quiz' course_pk=step.course.pk quiz_pk=step.pk %}" class="btn btn-warning">Edit</a>
+        <a href="{% url 'create_question' quiz_pk=step.pk question_type='mc' %}" class="btn btn-secondary">New Multiple Choice Question</a>
+        <a href="{% url 'create_question' quiz_pk=step.pk question_type='tf' %}" class="btn btn-dark">New True/False Question</a>
+      </div>
     {% endif %}
 
   </div>
