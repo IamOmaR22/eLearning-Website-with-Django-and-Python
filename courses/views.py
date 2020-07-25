@@ -86,3 +86,24 @@ def create_question(request, quiz_pk, question_type):
             return HttpResponseRedirect(quiz.get_absolute_url())
 
     return render(request, 'courses/question_form.html', {'form':form, 'quiz':quiz})
+
+
+@login_required
+def edit_question(request, quiz_pk, question_pk):
+    question = get_object_or_404(models.Question, pk=question_pk, quiz_id=quiz_pk)
+    if hasattr(question, 'truefalsequestion'):
+        form_class = forms.TrueFalseQuestionForm
+        question = question.truefalsequestion
+    else:
+        form_class = forms.MultipleChoiceQuestionForm
+        question = question.multiplechoicequestion
+    form = form_class(instance=question)
+
+    if request.method == 'POST':
+        form = form_class(request.POST, instance=question)
+        if form.is_valid():
+            form.save()
+            messages.success(request, "Updated Question")
+            return HttpResponseRedirect(question.quiz.get_absolute_url())
+
+    return render(request, 'courses/question_form.html', {'form':form, 'quiz':question.quiz})

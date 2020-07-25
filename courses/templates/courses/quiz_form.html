@@ -1,4 +1,5 @@
 {% extends "layout.html" %}
+{% load bootstrap4 %}
 
 {% block title %}{{ form.instance.title|default:"New Quiz"}} | {{ course.title }}{{ block.super }}{% endblock %}
 
@@ -7,12 +8,12 @@
 {% endblock %}
 
 {% block content %}
-  <div class="row columns">
+  <div class="columns">
     {{ block.super }}
     <h1>{{ form.instance.title|default:"Make a new quiz"}}</h1>
     <form class="" action="" method="post">
       {% csrf_token %}
-      {{ form.as_p }}
+      {% bootstrap_form form %}
       <input type="submit" class="btn btn=dark" name="" value="Save">
     </form>
   </div>
