@@ -5,8 +5,8 @@
 {% block title %}{{ form.instance.prompt|default:"New Question" }} | {{ quiz.course.title }} {{ block.super }}{% endblock %}
 
 {% block breadcrumbs %}
-  <li><a href="{% url 'courses:detail' pk=quiz.course.pk %}">{{ quiz.course.title }}</a></li>
-  <li><a href="{% url 'courses:quiz' course_pk=quiz.course.pk step_pk=quiz.pk %}">{{ quiz.title }}</a></li>
+  <li><a href="{% url 'detail' pk=quiz.course.pk %}">{{ quiz.course.title }}</a></li>
+  <li><a href="{% url 'quiz' course_pk=quiz.course.pk step_pk=quiz.pk %}">{{ quiz.title }}</a></li>
 {% endblock %}
 
 {% block content %}
@@ -18,5 +18,9 @@
       {% bootstrap_form form %}
       <input type="submit" class="btn btn-dark" name="" value="Save">
     </form>
+    {% if user.is_authenticated and form.instance.pk %}
+      <hr>
+      <a href="{% url 'create_answer' question_pk=form.instance.pk %}" class="btn btn-secondary">Add Answer</a>
+    {% endif %}
   </div>
 {% endblock %}

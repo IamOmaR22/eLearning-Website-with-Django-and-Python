@@ -17,13 +17,14 @@
             <li class="col bg-light">
               <h2>{{ question.prompt }}</h2>
                 {% for answer in question.answer_set.all %}
-                  <div class="callout">
+                  <div class="callout border border-secondary p-2">
                     {{ answer.text }}
                   </div>
+                  <br>
                 {% endfor %}
                 {% if user.is_authenticated %}
-                  <a href="{% url 'edit_question' question_pk=question.pk quiz_pk=step.pk %}" class="btn btn-success">Edit</a>
-                  <hr>
+                  <a href="{% url 'edit_question' question_pk=question.pk quiz_pk=step.pk %}" class="btn btn-success mb-2">Edit</a>
+
                 {% endif %}
             </li>
           {% endfor %}

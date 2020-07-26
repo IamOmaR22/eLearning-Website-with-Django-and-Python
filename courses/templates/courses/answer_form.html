@@ -1,0 +1,23 @@
+{% extends "layout.html" %}
+{% load course_extras %}
+{% load bootstrap4 %}
+
+{% block title %}New Answer | {{ question.prompt }} | {{ question.quiz.course.title }} {{ block.super }}{% endblock %}
+
+{% block breadcrumbs %}
+  <li><a href="{% url 'courses:detail' pk=question.quiz.course.pk %}">{{ question.quiz.course.title }}</a></li>
+  <li><a href="{% url 'courses:quiz' course_pk=question.quiz.course.pk step_pk=question.quiz.pk %}">{{ question.quiz.title }}</a></li>
+  <li>{{ question.prompt }}</li>
+{% endblock %}
+
+{% block content %}
+  <div class="columns">
+    {{ block.super }}
+    <h1>Add Answer</h1>
+    <form class="" action="" method="post">
+      {% csrf_token %}
+      {% bootstrap_form form %}
+      <input type="submit" class="btn btn-dark" name="" value="Save">
+    </form>
+  </div>
+{% endblock %}
