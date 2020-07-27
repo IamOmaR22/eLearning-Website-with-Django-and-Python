@@ -11,20 +11,20 @@
   <div class="columns container">
     <article>
         {{ block.super }}
-        <h1>{{step.title}}</h1>
+        <h1 class="mb-4 text-info">{{step.title}}</h1>
         <ul class="no-bullet">
           {% for question in step.question_set.all %}
-            <li class="col bg-light">
-              <h2>{{ question.prompt }}</h2>
+            <li class="col bg-white">
+              <h2 class="mb-4 text-danger">{{ question.prompt }}</h2>
                 {% for answer in question.answer_set.all %}
-                  <div class="callout border border-secondary p-2">
+                  <div class="callout border border-muted p-2">
                     {{ answer.text }}
                   </div>
                   <br>
                 {% endfor %}
                 {% if user.is_authenticated %}
-                  <a href="{% url 'edit_question' question_pk=question.pk quiz_pk=step.pk %}" class="btn btn-success mb-2">Edit</a>
-
+                  <a href="{% url 'edit_question' question_pk=question.pk quiz_pk=step.pk %}" class="btn btn-primary mb-2">Edit</a>
+                  <hr>
                 {% endif %}
             </li>
           {% endfor %}
@@ -34,7 +34,7 @@
     {% if user.is_authenticated %}
       <div class="container">
         <hr>
-        <a href="{% url 'edit_quiz' course_pk=step.course.pk quiz_pk=step.pk %}" class="btn btn-warning">Edit</a>
+        <a href="{% url 'edit_quiz' course_pk=step.course.pk quiz_pk=step.pk %}" class="btn btn-success">Edit</a>
         <a href="{% url 'create_question' quiz_pk=step.pk question_type='mc' %}" class="btn btn-secondary">New Multiple Choice Question</a>
         <a href="{% url 'create_question' quiz_pk=step.pk question_type='tf' %}" class="btn btn-dark">New True/False Question</a>
       </div>

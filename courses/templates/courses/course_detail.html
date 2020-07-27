@@ -5,13 +5,13 @@
 
 {% block content %}
     <article>
-        <h2>{{ course.title }}</h2>
+        <h2><strong>{{ course.title }}</strong></h2>
 
         <div class="card-header mt-4">
             {{ course.description|markdown_to_html }}
         </div>
 
-        <p class="bg-dark text-light p-3 mt-5">There are {{ course.step_set.count|apnumber }} step{{ course.step_set.count|pluralize }} in this course: {{ course.step_set.all|join:", " }}</p>
+        <h3 class="bg-dark text-white p-3 mt-5">There are {{ course.step_set.count|apnumber }} step{{ course.step_set.count|pluralize }} in this course: {{ course.step_set.all|join:", " }}</h3>
 
         <section>
 
@@ -28,8 +28,8 @@
     </article>
 
   {% if user.is_authenticated %}
-  <hr>
-  <a href="{% url 'create_quiz' course_pk=course.id %}" class="btn btn-primary">New Quiz</a>
+    <hr>
+    <a href="{% url 'create_quiz' course_pk=course.id %}" class="btn btn-primary">New Quiz</a>
   {% endif %}
 
 {% endblock %}

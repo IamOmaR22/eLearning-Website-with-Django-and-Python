@@ -8,7 +8,7 @@
         <h3>{{ step.title }}</h3>
 
         {% with con=step.content %}
-            {{ con|linebreaks }} Content: {{ con|wordcount }} words. Estimated time to complete: {{ con|wordcount|time_estimate }} minute{{ con|wordcount|time_estimate|pluralize }}. 
+            {{ con|linebreaks }} Content: {{ con|wordcount }} words. Estimated time to complete: {{ con|wordcount|time_estimate }} minute{{ con|wordcount|time_estimate|pluralize }}.
         {% endwith %}
     </article>
 {% endblock %}
