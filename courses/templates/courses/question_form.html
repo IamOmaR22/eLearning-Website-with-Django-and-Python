@@ -20,7 +20,7 @@
     </form>
     {% if user.is_authenticated and form.instance.pk %}
       <hr>
-      <a href="{% url 'create_answer' question_pk=form.instance.pk %}" class="btn btn-secondary">Add Answer</a>
+      <a href="{% url 'create_answer' question_pk=form.instance.pk %}" class="btn btn-secondary">Answers</a>
     {% endif %}
   </div>
 {% endblock %}
