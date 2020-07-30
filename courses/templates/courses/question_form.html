@@ -16,11 +16,39 @@
     <form class="" action="" method="post">
       {% csrf_token %}
       {% bootstrap_form form %}
+
+      {{ formset.management_form }}
+
+      <table role="grid" class="table table-striped" style="width: 100%">
+        <thead style="background-color: #17b3a3; color: white;">
+          <tr>
+            <th scope="col" class="text-center" style="width: 10%">Order</th>
+            <th scope="col" class="text-center">Text</th>
+            <th scope="col" class="text-center" style="width: 10%">Correct?</th>
+            <th scope="col" class="text-center" style="width: 10%">Delete</th>
+          </tr>
+        </thead>
+        <tbody class="order">
+          {% for form in formset %}
+            <tr class="answer-form {% if form.instance.pk %}item{% else %}new{% endif %}">
+              <td>{{ form.id }}{{ form.order }}</td>
+              <td class="text-center">{{ form.text }}</td>
+              <td class="text-center">{{ form.correct }}</td>
+              {% if form.instance.pk %}
+                <td class="text-center">{{ form.DELETE }}</td>
+              {% else %}
+                <td class="text-center"></td>
+              {% endif %}
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+
       <input type="submit" class="btn btn-dark" name="" value="Save">
     </form>
-    {% if user.is_authenticated and form.instance.pk %}
+    <!-- {% if user.is_authenticated and form.instance.pk %}
       <hr>
       <a href="{% url 'create_answer' question_pk=form.instance.pk %}" class="btn btn-secondary">Answers</a>
-    {% endif %}
+    {% endif %} -->
   </div>
 {% endblock %}
