@@ -123,6 +123,9 @@ def edit_question(request, quiz_pk, question_pk):
             for answer in answers:
                 answer.question = question
                 answer.save()
+
+            for answer in answer_forms.deleted_objects:
+                answer.delete()    
             messages.success(request, "Updated Question")
             return HttpResponseRedirect(question.quiz.get_absolute_url())
 

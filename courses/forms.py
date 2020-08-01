@@ -22,7 +22,7 @@ class QuestionForm(forms.ModelForm):
         )
 
 
-class TrueFalseQuestionForm(forms.ModelForm):
+class TrueFalseQuestionForm(QuestionForm):
     class Meta:
         model = models.TrueFalseQuestion
         fields = [
@@ -31,7 +31,7 @@ class TrueFalseQuestionForm(forms.ModelForm):
         ]
 
 
-class MultipleChoiceQuestionForm(forms.ModelForm):
+class MultipleChoiceQuestionForm(QuestionForm):
     class Meta:
         model = models.MultipleChoiceQuestion
         fields = [

@@ -52,3 +52,21 @@
     {% endif %} -->
   </div>
 {% endblock %}
+
+
+{% block css %}
+  {{ form.media.css }}
+{% endblock %}
+
+
+{% block javascript %}
+  {% load static %}
+  {{ form.media.js }}
+  <script src="{% static 'js/vendor/jquery.formset.js' %}"></script>
+  <script type="text/javascript">
+    $('.answer_form').formset({
+      addText: 'add anwer',
+      deleteText: 'remove'
+    });
+  </script>
+{% endblock %}
