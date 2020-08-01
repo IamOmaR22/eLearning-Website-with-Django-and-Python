@@ -17,7 +17,7 @@
 
             {% for step in steps %}
             <div class="card-header">
-                <h3><a href="{{ step.get_absolute_url }}">{{ step.title }}</a></h3>
+                <h3><a class="text-success" href="{{ step.get_absolute_url }}">{{ step.title }}</a></h3>
             </div>
                 <p class="card-body">{{ step.description }}</p>
                 <hr>
