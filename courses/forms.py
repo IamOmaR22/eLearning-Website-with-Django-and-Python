@@ -13,6 +13,15 @@ class QuizForm(forms.ModelForm):
         ]
 
 
+class QuestionForm(forms.ModelForm):
+    class Media:
+        css = {'all':('courses/css/order.css',)}
+        js = (
+            'courses/js/vendor/jquery.fn.sortable.min.js',
+            'courses/js/order.js'
+        )
+
+
 class TrueFalseQuestionForm(forms.ModelForm):
     class Meta:
         model = models.TrueFalseQuestion
