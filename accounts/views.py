@@ -7,4 +7,6 @@ from .forms import SignUpForm
 from django.urls import reverse_lazy
 
 class SignUpView(CreateView):
-    pass
+    form_class = SignUpForm
+    success_url = reverse_lazy('home')   # After Creating Login Form Then Put 'login' Here.
+    template_name = 'users/register.html'
