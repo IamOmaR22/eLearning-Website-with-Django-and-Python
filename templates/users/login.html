@@ -4,9 +4,12 @@
 {% block title %}Login!{% endblock %}
 
 {% block content %} 
+<div class="col-md-6 container table-bordered rounded">
+    <div class="mb-3 row justify-content-center bg-dark text-light pt-2 rounded"><h3>Sign In</h3></div>    
     <form method="POST">
          {% csrf_token %}
          {% bootstrap_form form %}
-         <button type="submit" class="btn btn-primary">Log In</button>
+         <button type="submit" class="btn btn-dark btn-block mb-2">Login</button>
     </form>
+</div> 
 {% endblock content %}
