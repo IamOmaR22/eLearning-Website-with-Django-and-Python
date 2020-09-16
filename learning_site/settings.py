@@ -127,6 +127,8 @@ STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'assets'),
 )
 
+LOGIN_REDIRECT_URL = 'home'  # You Can Change Redirect Wherever You Want To Go After Login.
+
 # When Form Is Submitted Then You Will Get An Email.
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_FILE_PATH = os.path.join(BASE_DIR, 'suggestions')

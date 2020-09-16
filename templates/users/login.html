@@ -1,1 +1,12 @@
-login
+{% extends "layout.html" %}
+{% load bootstrap4 %}
+
+{% block title %}Login!{% endblock %}
+
+{% block content %} 
+    <form method="POST">
+         {% csrf_token %}
+         {% bootstrap_form form %}
+         <button type="submit" class="btn btn-primary">Log In</button>
+    </form>
+{% endblock content %}
