@@ -16,14 +16,16 @@
       <div>{% nav_courses_list %}</div>
     <ul>
         <li><a href="{% url 'home' %}">Home</a></li>
-        <li><a href="{% url 'course_list' %}">Courses</a></li>
-        <li><a href="{% url 'suggestion' %}">Suggestion</a></li>
-
-        <li><a href="{% url 'login' %}">Login</a></li>
-        <li><a href="{% url 'register' %}">Register</a></li>
-        <li>
-            <a href="{% url 'logout' %}"><i class="fas fa-fw fa-sign-out-alt"></i><span>Logout</span></a>
-        </li>
+        {% if request.user.is_authenticated %}
+            <li><a href="{% url 'course_list' %}">Courses</a></li>
+            <li><a href="{% url 'suggestion' %}">Suggestion</a></li>
+            <li>
+                <a href="{% url 'logout' %}"><i class="fas fa-fw fa-sign-out-alt"></i><span>Logout</span></a>
+            </li>
+        {% else %}
+            <li><a href="{% url 'login' %}">Login</a></li>
+            <li><a href="{% url 'register' %}">Register</a></li>         
+        {% endif %}
     </ul>
         <!-- <p class="card-header mb-3">Don't miss our latest course - {% newest_course %}!</p> -->
 
