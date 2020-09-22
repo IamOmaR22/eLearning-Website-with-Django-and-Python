@@ -10,3 +10,9 @@ class SignUpView(CreateView):
     form_class = SignUpForm
     success_url = reverse_lazy('login')   # After Creating Login Form Then Put 'login' Here.
     template_name = 'users/register.html'
+
+
+def profile(request):
+
+    return render(request, 'users/profile.html')
+
