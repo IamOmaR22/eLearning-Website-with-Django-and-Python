@@ -19,10 +19,10 @@
         {% if request.user.is_authenticated %}
             <li><a href="{% url 'course_list' %}">Courses</a></li>
             <li><a href="{% url 'suggestion' %}">Suggestion</a></li>
+            <li><a href="{% url 'profile' %}">Profile</a></li>
             <li>
                 <a href="{% url 'logout' %}"><i class="fas fa-fw fa-sign-out-alt"></i><span>Logout</span></a>
             </li>
-            <li><a href="{% url 'profile' %}">Profile</a></li>
         {% else %}
             <li><a href="{% url 'login' %}">Login</a></li>
             <li><a href="{% url 'register' %}">Register</a></li>         
