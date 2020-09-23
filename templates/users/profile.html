@@ -4,7 +4,7 @@
 {% block title %}Profile!{% endblock %}
 
 {% block content %}
-
+<div class="container col-md-6 table-bordered rounded">
     <div class="content-section">
       <div class="media">
         <img class="rounded-circle account-img" src="{{ user.profile.image.url }}">
@@ -13,6 +13,23 @@
           <p class="text-secondary">{{ user.email }}</p>
         </div>
       </div>
-    </div>
 
+    <!-- Don't Forget To Add enctype="multipart/form-data". If We Leave This, Then It Won't Save Data In The Background -->
+      <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+
+            <fieldset class="form-group">
+                <legend class="border-bottom mb-4">Profile Info</legend>
+
+                {% bootstrap_form u_form %}
+                {% bootstrap_form p_form %}
+
+            </fieldset>
+            <div class="form-group">
+                <button class="btn btn-outline-info" type="submit">Update</button>
+            </div>
+        </form>
+
+    </div>
+</div>
 {% endblock %}

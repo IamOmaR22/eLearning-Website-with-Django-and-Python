@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
-
+from .forms import UserUpdateForm, ProfileUpdateForm
 
 # Create your views here.
 
@@ -15,6 +15,13 @@ class SignUpView(CreateView):
 
 @login_required
 def profile(request):
+    u_form = UserUpdateForm()
+    p_form = ProfileUpdateForm()
 
-    return render(request, 'users/profile.html')
+    context = {   # To Pass This Into Template We Used context.
+        'u_form': u_form,
+        'p_form': p_form
+    }
+
+    return render(request, 'users/profile.html', context)
 
