@@ -1,7 +1,7 @@
 # eLearning-Website-Django
-## A project on eLearning Site using Django and SQLite ![Django](https://img.shields.io/badge/-Django-%23092E20?style=flat-square&logo=Django&logoColor=white) ![SQLite](https://img.shields.io/badge/-SQLite-%23003B57?style=flat-square&logo=SQLite) ![Bootstrap](https://img.shields.io/badge/-Bootstrap-%23563D7C?style=flat-square&logo=Bootstrap)
+*A project on eLearning Site using Django and SQLite ![Django](https://img.shields.io/badge/-Django-%23092E20?style=flat-square&logo=Django&logoColor=white) ![SQLite](https://img.shields.io/badge/-SQLite-%23003B57?style=flat-square&logo=SQLite) ![Bootstrap](https://img.shields.io/badge/-Bootstrap-%23563D7C?style=flat-square&logo=Bootstrap)*
 
-## eLearning Website Features:
+# Features
 ```
 Student Login System.
 Student Registration w/ email verification
@@ -15,9 +15,37 @@ Student Page for learning.
 Teacher Page for uploading a lesson.
 Fancy Animations!
 Student can attempt a quiz
+User-friendly
 ```
 
-## Future Work:
+# Future Work:
 ```
 I will use vue.js for Front-end in future.
 ```
+
+# Tools
+## Front-end Part
+```
+HTML
+CSS
+Bootstrap
+JavaScript
+```
+## Back-end
+```
+Django
+SQLite 3
+```
+# Screenshots of the Project
+<p align="center">
+  <img width="660" height="300" src="assets/ss/a.png">
+  <img width="660" height="300" src="assets/ss/b.png">
+  <img width="660" height="300" src="assets/ss/c.png">
+  <img width="660" height="300" src="assets/ss/d.png">
+  <img width="660" height="300" src="assets/ss/e.png">
+  <img width="660" height="300" src="assets/ss/f.png">
+</p>
+
+**Copyright (c)** 2020-3020 Md. Omar Faruk
+
+## Go Through This Site Then You Will Know About This Site Properly.
